@@ -7,8 +7,9 @@ RIGHT:39
 document.addEventListener("keydown", mover)
 var vp = document.getElementById("villa_platzi");
 var papel = vp.getContext("2d");
-var xl = 50;
-var yl = 50;
+var xl = 150;
+var yl = 150;
+var cantidad = aleatorio(0, 10)
 
 
 var fondo =
@@ -34,8 +35,6 @@ var pollo =
   url: "pollo.png",
   cargaOK: false
 }
-var cantidad = aleatorio(0, 10);
-console.log(cantidad);
 
 fondo.imagen = new Image();
 fondo.imagen.src = fondo.url;
@@ -58,17 +57,16 @@ function cargarFondo()
   fondo.cargaOK = true;
   dibujar();
 }
-
 function cargarVaca()
 {
   vaca.cargaOK = true;
   dibujar();
-}
 
+}
 function cargarCerdo()
 {
   cerdo.cargaOK = true;
-  dibujar();
+  dibuja();
 }
 
 function cargarPollo()
@@ -88,27 +86,22 @@ function dibujar()
   {
     for (var v=0; v < cantidad; v++)
     {
-    var x = aleatorio(0, 5);
-    var y = aleatorio(0, 5);
-    var x = x * 80;
-    var y = y * 80;
+      var x= aleatorio(0, 7) * 80;
+      var y= aleatorio(0, 7) * 80;
     papel.drawImage(vaca.imagen, x, y);
     }
   }
-  if (cerdo.cargaOK == true)
-  {
+    if (cerdo.cargaOK == true)
+    {
     papel.drawImage(cerdo.imagen, xl, yl);
-  }
+    }
+
   if (pollo.cargaOK == true)
   {
-  for (var v=0; v < cantidad; v++)
+    for (var p=0; p < cantidad; p++)
   {
-    var x = aleatorio(0, 5);
-    var y = aleatorio(0, 5);
-    var x = x * 80;
-    var y = y * 80;
-    var x = aleatorio(0, 420);
-    var y = aleatorio(0, 420);
+    var x= aleatorio(0, 7) * 80;
+    var y= aleatorio(0, 7) * 80;
     papel.drawImage(pollo.imagen, x, y);
   }
 }
@@ -127,33 +120,30 @@ function mover(evento)
   switch (evento.keyCode)
   {
     case teclas.UP:
-    dibujar()
-    papel.drawImage(cerdo.imagen, xl, yl)
+    (xl, yl - movimiento);
     yl = yl - movimiento;
+    dibujar()
     console.log("arriba");
     break;
 
     case teclas.DOWN:
-    dibujar()
-    papel.drawImage(cerdo.imagen, xl, yl);
     (xl, yl + movimiento);
     yl = yl + movimiento;
+    dibujar()
     console.log("abajo");
     break;
 
     case teclas.LEFT:
-    dibujar()
-    papel.drawImage(cerdo.imagen, xl, yl);
-    (xl, yl, xl - movimiento, yl);
+    (xl - movimiento, yl);
     xl = xl - movimiento;
+    dibujar()
     console.log("izquierda");
     break;
 
     case teclas.RIGHT:
-    dibujar()
-    papel.drawImage(cerdo.imagen, xl, yl);
     (xl + movimiento, yl);
     xl = xl + movimiento;
+    dibujar()
     console.log("derecha");
     break;
   }
