@@ -66,7 +66,7 @@ function cargarVaca()
 function cargarCerdo()
 {
   cerdo.cargaOK = true;
-  dibuja();
+  dibujar();
 }
 
 function cargarPollo()
@@ -123,28 +123,24 @@ function mover(evento)
     (xl, yl - movimiento);
     yl = yl - movimiento;
     dibujar()
-    console.log("arriba");
     break;
 
     case teclas.DOWN:
     (xl, yl + movimiento);
     yl = yl + movimiento;
     dibujar()
-    console.log("abajo");
     break;
 
     case teclas.LEFT:
     (xl - movimiento, yl);
     xl = xl - movimiento;
     dibujar()
-    console.log("izquierda");
     break;
 
     case teclas.RIGHT:
     (xl + movimiento, yl);
     xl = xl + movimiento;
     dibujar()
-    console.log("derecha");
     break;
   }
   }
